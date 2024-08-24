@@ -1,8 +1,8 @@
 <?php
 /** git configuration file */
 return [
-    'source_branch' => 'git-push-feature',
-    'target_branch' => 'master',
+    'source_branch' => 'feature-branch',
+    'target_branch' => 'master-branch',
     'commit_message' => 'File migration inital commit',
 
     'migration_files' => [

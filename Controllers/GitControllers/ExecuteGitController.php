@@ -148,6 +148,6 @@ Class ExecuteGitController extends  GitController {
 
         $this->checkProceedExecution("Type yes to push changes to remote branch $this->target_branch : ", 'yes');
         $this->execute($this->pushChanges($this->target_branch));
-        $this->infoText("Changes pushed to branch $migration_counter");
+        $this->infoText("Changes pushed to branch $this->target_branch");
     }
 }
