@@ -20,7 +20,7 @@ function boot() {
     echo "2. Laravel Command Executor" . PHP_EOL;
     echo PHP_EOL;
     
-    $user_input = Helpers::prompt("Please provide an input : ");
+    $user_input = Helpers::prompt("Please provide an input : "); 
     
     /** git command service*/
     if ($user_input == 1) {

@@ -10,7 +10,7 @@ trait MessageTrait {
      */
     public function successText($message)
     {
-        echo "\033[32m $message \033[0m\n";
+        echo "\033[32m $message \033[0m\n"; 
     }
 
     /**
