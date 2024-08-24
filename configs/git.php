@@ -1,13 +1,13 @@
 <?php
 /** git configuration file */
 return [
-    'source_branch' => 'dev2-tmp',
-    'target_branch' => 'dev2-release-sprint',
+    'source_branch' => 'git-push-feature',
+    'target_branch' => 'master',
     'commit_message' => 'File migration inital commit',
 
     'migration_files' => [
-        'resources/views/emails/e-sign.blade.php',
-        'public/images/background_sign.png'
+        'resources/views/test_folder/test.blade.php',
+        'public/images/test.png'
     ],
 
     /** Restrict the source branch */
