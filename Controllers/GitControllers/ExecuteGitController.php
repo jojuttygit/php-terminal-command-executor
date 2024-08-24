@@ -145,5 +145,9 @@ Class ExecuteGitController extends  GitController {
         echo PHP_EOL;
         $this->infoText("Total Files: " . count($this->files));
         $this->infoText("Migrated Files: $migration_counter");
+
+        $this->checkProceedExecution("Type yes to push changes to remote branch $this->target_branch : ", 'yes');
+        $this->execute($this->pushChanges($this->target_branch));
+        $this->infoText("Changes pushed to branch $migration_counter");
     }
 }
