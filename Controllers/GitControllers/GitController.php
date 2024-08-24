@@ -1,6 +1,10 @@
 <?php
 
 namespace PHPTerminalCommandExecutor\Controllers\GitControllers;
+
+/**
+ * Handle git commands
+ */
 Class GitController {
     protected function branchCheckout($branch) 
     {

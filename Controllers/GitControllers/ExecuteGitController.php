@@ -8,6 +8,10 @@ use PHPTerminalCommandExecutor\Controllers\GitControllers\GitController;
 use PHPTerminalCommandExecutor\traits\MessageTrait;
 use PHPTerminalCommandExecutor\Helpers;
 
+/**
+ * Customized git pipeline operations 
+ * File migrations
+ */
 Class ExecuteGitController extends  GitController {
     use MessageTrait;
     private $target_branch = null;
@@ -24,6 +28,13 @@ Class ExecuteGitController extends  GitController {
         $this->restricted_branches = $config['restricted_branches'];
         $this->commit_message = $config['commit_message'];
     }
+
+    /**
+     * Execute terminal commands
+     * @param string $command
+     * @param boolean $return
+     * @return void|string
+     */
     private function execute($command, $return = false) 
     {
         $output = [];
@@ -43,6 +54,12 @@ Class ExecuteGitController extends  GitController {
         }
     }
 
+    /**
+     * Confirm if we need to proceed execution based on user input
+     * @param string $message
+     * @param string $expected_input
+     * @return void
+     */
     private function checkProceedExecution($message, $expected_input = 'yes') 
     {
         $user_input = Helpers::prompt($message);
@@ -53,6 +70,10 @@ Class ExecuteGitController extends  GitController {
         }
     }
 
+    /**
+     * Validate source and target git branch
+     * @return void
+     */
     private function validateBranches()
     {
         if (empty($this->target_branch) || empty($this->source_branch)) {
@@ -76,7 +97,11 @@ Class ExecuteGitController extends  GitController {
         }
     }
 
-    private function validateandConfirmFiles()
+    /**
+     * Validate migration files
+     * @return void
+     */
+    private function validateAndConfirmFiles()
     {
         if (empty($this->files)) {
             $this->errorText('No files to migrate');
@@ -90,10 +115,14 @@ Class ExecuteGitController extends  GitController {
         $this->checkProceedExecution("Check files and type ok to proceed : ", 'ok');
     }
 
+    /**
+     * Migrate files from one branch to another
+     * @return void
+     */
     public function fileMigration()
     {
         $this->validateBranches();
-        $this->validateandConfirmFiles();
+        $this->validateAndConfirmFiles();
         $migration_counter = 0;
 
         $this->execute($this->branchCheckout($this->target_branch));
